@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import $ from 'jquery';
+
+import MenuButton from './components/navigation/MenuButton';
+import CircularMenu from './components/circularMenu/CircularMenu';
+import Landing from './landingPage/LandingPage';
+
 import './App.css';
 
 function App() {
+
+  const [menuActive, setMenuActive] = useState(false);
+
+  useEffect(() => {
+
+    $('#menu-button').on('click', function(){ setMenuActive(true) });
+    $('#backdrop').on('click', function(){ setMenuActive(false) });
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app' >
+      <div id='backdrop' className='backdrop' style={{visibility: menuActive === true ? 'visible' : 'hidden'}}></div>
+      <MenuButton />
+      <div className='app_content' >
+        <CircularMenu />
+        <Landing />
+      </div>
     </div>
   );
 }

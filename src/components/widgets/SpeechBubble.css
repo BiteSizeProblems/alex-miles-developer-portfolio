@@ -1,0 +1,16 @@
+.speech-bubble_container {
+  display: flex;
+  justify-content: center;
+}
+
+.speech-bubble_container .avatar {
+  padding: 5em;
+}
+
+.speech-bubble_text {
+  position: absolute;
+  background-color: white;
+  border-radius: 25px;
+  color: darkGrey;
+  padding: 0.5em;
+}
